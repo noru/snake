@@ -131,6 +131,7 @@ object App {
 
   @JSExport
   def main(args: Array[String]): Unit = {
+    _debug("Hello playa, welcome to my snake game powered by scala.js!")
     dom.render(document.body, table)
     document.addEventListener("keydown", keypress)
   }

@@ -84,7 +84,7 @@ object App {
     }
   }
 
-  def keypress(e: KeyboardEvent) {
+  def onKeypress(e: KeyboardEvent) {
     if (e.keyCode < 37 || e.keyCode > 40) {
       return
     }
@@ -97,9 +97,7 @@ object App {
   }
 
   @dom 
-  def table: Binding[BindingSeq[Node]] = {
-
-    <h1 class="header">Snake game with scala.js</h1>
+  def table: Binding[Node] = {
     <div class="stage" style={s"width:${cellSize * stageWidth}px;height:${cellSize * stageHeight}px;"}>
 
       <div class="button-wrapper">
@@ -132,7 +130,7 @@ object App {
   @JSExport
   def main(args: Array[String]): Unit = {
     _debug("Hello playa, welcome to my snake game powered by scala.js!")
-    dom.render(document.body, table)
-    document.addEventListener("keydown", keypress)
+    dom.render(document.getElementById("app"), table)
+    document.addEventListener("keydown", onKeypress)
   }
 }
